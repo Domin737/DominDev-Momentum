@@ -1,4 +1,62 @@
 document.addEventListener("DOMContentLoaded", () => {
+  /* --- TYPEWRITER EFFECT LOGIC --- */
+  const typeTextSpan = document.querySelector(".typewriter-text");
+  const cursorSpan = document.querySelector(".typewriter-cursor");
+
+  if (typeTextSpan) {
+    const words = [
+      "BROŃ.",
+      "PRZEWAGA.",
+      "DOMINACJA.",
+      "MASZYNA."
+    ];
+
+    const typingDelay = 150;
+    const erasingDelay = 80;
+    const newWordDelay = 2500;
+
+    let wordIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    function type() {
+      const currentWord = words[wordIndex];
+
+      if (isDeleting) {
+        typeTextSpan.textContent = currentWord.substring(0, charIndex - 1);
+        charIndex--;
+      } else {
+        typeTextSpan.textContent = currentWord.substring(0, charIndex + 1);
+        charIndex++;
+      }
+
+      let typeSpeed = typingDelay;
+
+      if (isDeleting) {
+        typeSpeed = erasingDelay;
+      }
+
+      if (!isDeleting && charIndex === currentWord.length) {
+        typeSpeed = newWordDelay;
+        isDeleting = true;
+        if (cursorSpan) cursorSpan.style.animationPlayState = "paused";
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        wordIndex++;
+        if (wordIndex === words.length) {
+          wordIndex = 0;
+        }
+        typeSpeed = 500;
+        if (cursorSpan) cursorSpan.style.animationPlayState = "running";
+      }
+
+      setTimeout(type, typeSpeed);
+    }
+
+    // Start z lekkim opóźnieniem dla dramaturgii
+    setTimeout(type, 1200);
+  }
+
   /* --- MATRIX CANVAS EFFECT (rAF + Throttling for Performance) --- */
   const canvas = document.getElementById("matrixCanvas");
 
@@ -1567,6 +1625,51 @@ document.addEventListener("DOMContentLoaded", () => {
           if (formMessage) formMessage.innerText = "";
         }, 4000);
       }, 1500);
+    });
+  }
+
+  /* --- CUSTOM CURSOR LOGIC --- */
+  const cursorDot = document.getElementById("cursor-dot");
+  const cursorOutline = document.getElementById("cursor-outline");
+
+  // Uruchom tylko na desktopie (> 1024px)
+  if (cursorDot && cursorOutline && window.matchMedia("(min-width: 1024px)").matches) {
+
+    // 1. Ruch kursora
+    window.addEventListener("mousemove", (e) => {
+      const posX = e.clientX;
+      const posY = e.clientY;
+
+      // Kropka (środek) - ruch natychmiastowy
+      cursorDot.style.left = `${posX}px`;
+      cursorDot.style.top = `${posY}px`;
+
+      // Okrąg (outline) - lekki lag (płynność)
+      cursorOutline.animate({
+        left: `${posX}px`,
+        top: `${posY}px`
+      }, { duration: 500, fill: "forwards" });
+    });
+
+    // 2. Efekt Hover na interaktywnych elementach
+    const interactiveSelectors = "a, button, input, textarea, select, .project-card, .service-card, .chatbot-trigger, input[type='range'], input[type='checkbox']";
+    const interactiveElements = document.querySelectorAll(interactiveSelectors);
+
+    interactiveElements.forEach((el) => {
+      el.addEventListener("mouseenter", () => {
+        document.body.classList.add("hovering");
+      });
+      el.addEventListener("mouseleave", () => {
+        document.body.classList.remove("hovering");
+      });
+    });
+
+    // 3. Ukrywanie kursora po wyjechaniu z okna
+    document.addEventListener("mouseleave", () => {
+      document.body.classList.add("cursor-hidden");
+    });
+    document.addEventListener("mouseenter", () => {
+      document.body.classList.remove("cursor-hidden");
     });
   }
 });

@@ -26,25 +26,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  cursor: default;
-}
-
-/* Fix: Restore proper cursors for interactive elements */
-input[type="text"],
-input[type="email"],
-input[type="tel"],
-input[type="password"],
-input[type="search"],
-textarea {
-  cursor: text;
-}
-
-input[type="range"] {
-  cursor: grab;
-}
-
-input[type="range"]:active {
-  cursor: grabbing;
 }
 
 html {
@@ -167,6 +148,12 @@ h3 {
   height: 100%;
   z-index: -1;
   opacity: 0.6;
+}
+
+@media (max-width: 768px) {
+  #matrixCanvas {
+    opacity: 0.35;
+  }
 }
 
 /* --- SCROLLBAR --- */
@@ -546,12 +533,21 @@ nav {
   animation: fadeInDown 1s ease forwards;
 }
 
+@media (max-width: 768px) {
+  .hero-subtitle {
+    color: #ff3a3a; /* Lekko jaśniejszy czerwony dla mobile */
+    font-weight: 800;
+    font-size: 0.95rem;
+    text-shadow: 0 0 6px rgba(255, 58, 58, 0.3);
+  }
+}
+
 .hero-title {
-  font-size: 5.5rem;
+  font-size: 4.5rem;
 
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 
-  line-height: 1;
+  line-height: 1.2;
 
   opacity: 0;
 
@@ -576,6 +572,14 @@ nav {
   opacity: 0;
 
   animation: fadeInUp 1s 0.9s ease forwards;
+}
+
+.hero-highlight {
+  display: block;
+  margin-top: 12px;
+  color: var(--text-muted);
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
 /* --- TECH STACK MARQUEE --- */
@@ -2363,4 +2367,89 @@ footer {
     font-size: 0.65rem;
     padding-top: 15px;
   }
+}
+
+/* --- CUSTOM CURSOR (PREMIUM FEEL) --- */
+
+/* Ukrywamy systemowy kursor tylko na Desktopie */
+@media (min-width: 1024px) {
+  body, a, button, input, textarea, select {
+    cursor: none;
+  }
+}
+
+.cursor-dot,
+.cursor-outline {
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  z-index: 9999;
+  pointer-events: none;
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .cursor-dot, .cursor-outline {
+    display: block;
+  }
+}
+
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--primary);
+  box-shadow: 0 0 10px var(--primary);
+}
+
+.cursor-outline {
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255, 31, 31, 0.5);
+  transition: width 0.2s, height 0.2s, background-color 0.2s;
+}
+
+/* Stan aktywny (Hover) */
+body.hovering .cursor-outline {
+  width: 70px;
+  height: 70px;
+  background-color: rgba(255, 31, 31, 0.05);
+  border-color: var(--primary);
+  mix-blend-mode: screen;
+}
+
+/* Ukryj custom kursor, gdy wyjedziemy poza okno */
+body.cursor-hidden .cursor-dot,
+body.cursor-hidden .cursor-outline {
+  opacity: 0;
+}
+
+
+/* --- TYPEWRITER EFFECT (HERO) --- */
+
+.typewriter-text {
+  color: var(--primary);
+  font-weight: 900;
+  text-transform: uppercase;
+  text-shadow: 0 0 20px rgba(255, 31, 31, 0.8);
+}
+
+@media (max-width: 768px) {
+  .typewriter-text {
+    text-shadow: 0 0 15px rgba(255, 31, 31, 0.65);
+  }
+}
+
+.typewriter-cursor {
+  display: inline-block;
+  color: var(--primary);
+  margin-left: 5px;
+  font-weight: 900;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
