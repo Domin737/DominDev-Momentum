@@ -2770,3 +2770,86 @@ body.cursor-hidden .cursor-outline {
     opacity: 0;
   }
 }
+
+/* --- LIVE STATS HUD (HERO) --- */
+
+.hero-stats {
+  display: flex;
+  gap: 30px;
+  margin-top: 40px;
+  font-family: "Courier New", monospace;
+  font-size: 0.8rem;
+  color: #666;
+  letter-spacing: 1px;
+  padding: 15px 25px;
+  background: rgba(10, 10, 10, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: 2px solid var(--primary);
+  backdrop-filter: blur(5px);
+  width: fit-content;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.stat-value {
+  color: #fff;
+  font-weight: 700;
+}
+
+.text-green {
+  color: #4ade80;
+  text-shadow: 0 0 8px rgba(74, 222, 128, 0.4);
+}
+
+.text-primary {
+  color: var(--primary);
+}
+
+/* Pulsująca kropka statusu */
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #4ade80;
+  border-radius: 50%;
+  box-shadow: 0 0 5px #4ade80;
+  animation: statusBlink 2s infinite;
+}
+
+@keyframes statusBlink {
+  0% { opacity: 1; box-shadow: 0 0 5px #4ade80; }
+  50% { opacity: 0.4; box-shadow: 0 0 0px #4ade80; }
+  100% { opacity: 1; box-shadow: 0 0 5px #4ade80; }
+}
+
+/* Responsywność dla HUD - WERSJA ODCHUDZONA */
+@media (max-width: 768px) {
+  .hero-stats {
+    /* Reset stylów ramki */
+    background: transparent;
+    border: none;
+    backdrop-filter: none;
+    padding: 0;
+
+    /* Układ pionowy, ale zbity */
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 25px;
+    width: 100%;
+  }
+
+  .stat-item {
+    font-size: 0.7rem;
+    color: #888;
+    padding-left: 10px;
+    border-left: 2px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Wyróżnienie wartości */
+  .stat-value {
+    font-size: 0.8rem;
+  }
+}
