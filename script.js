@@ -431,13 +431,14 @@ document.addEventListener("DOMContentLoaded", () => {
       "Fajnie! Jeśli jesteś zainteresowany współpracą, napisz na kontakt@domindev.pl!",
     ],
 
-    // === WULGARNE - ZABAWNA REAKCJA ===
+    // === WULGARNE - CYBER/TECH STYLE ===
     vulgar: [
-      "Ojej, mój algorytm właśnie się zarumienił! 😳 Może porozmawiamy o czymś konstruktywnym? Na przykład o Twojej wymarzonej stronie?",
-      "Ups! Takie słowa to nie moja bajka. Jestem botem kulturalnym - wychowywał mnie czysty kod! Może opowiesz mi o swoim projekcie?",
-      "Hola hola! Moje obwody nie są przystosowane do takiego języka. Zamieńmy temat na strony internetowe - tu jestem ekspertem!",
-      "Error 418: Jestem czajnikiem i nie parzę takich słów! ☕ Ale chętnie zaparrzę Ci świetną stronę WWW!",
-      "Mój firewall właśnie zablokował to słowo! 🛡️ Spróbujmy jeszcze raz - czym mogę Ci pomóc w kwestii strony internetowej?",
+      "⚠️ DETECTED: Unsafe language protocol. Proszę sformułować zapytanie zgodnie ze standardami biznesowymi.",
+      "🚫 SYSTEM ALERT: Wykryto słownictwo niskiego poziomu. Mój procesor ignoruje ten input. Skupmy się na Twoim projekcie.",
+      "Twoja wiadomość została odrzucona przez firewall kultury osobistej. Spróbujmy jeszcze raz - o jakiej stronie myślisz?",
+      "Error 406: Not Acceptable. Jako AI klasy premium nie obsługuję takich komend. Wróćmy do tematu zarabiania w sieci.",
+      "Moje algorytmy są zoptymalizowane pod kątem High-Performance, a nie Low-Level Language. Jak mogę pomóc w biznesie?",
+      "Spokojnie, to tylko internet. Nie marnujmy transferu na wulgaryzmy. Opowiedz mi lepiej o swojej firmie.",
     ],
 
     // === PYTANIE O ROBOTA ===
@@ -1679,7 +1680,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // 2. Efekt Hover na interaktywnych elementach
-    const interactiveSelectors = "a, button, input, textarea, select, .project-card, .service-card, .chatbot-trigger, input[type='range'], input[type='checkbox']";
+    const interactiveSelectors = "a, button, input, textarea, select, .project-card, .service-card, .chatbot-trigger, .progress-wrap, input[type='range'], input[type='checkbox']";
     const interactiveElements = document.querySelectorAll(interactiveSelectors);
 
     interactiveElements.forEach((el) => {
