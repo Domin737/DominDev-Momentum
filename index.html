@@ -246,19 +246,44 @@
 
             <div class="cert-container reveal">
               <h4>CERTYFIKACJA & KOMPETENCJE:</h4>
-              <div class="cert-badges">
-                <span class="cert-badge" title="GoIT - 2024">
-                  <i class="fa-solid fa-code"></i> FULLSTACK DEV
-                </span>
-                <span class="cert-badge" title="Cisco - 2023">
-                  <i class="fa-solid fa-shield-halved"></i> CYBERSECURITY ESSENTIALS
-                </span>
-                <span class="cert-badge" title="AWS Academy - 2022">
-                  <i class="fa-brands fa-aws"></i> AWS CLOUD FOUNDATIONS
-                </span>
-                <span class="cert-badge" title="2024">
-                  <i class="fa-solid fa-database"></i> POSTGRESQL ADMIN
-                </span>
+              <div class="cert-grid">
+
+                <div class="cert-chip">
+                  <div class="cert-icon"><i class="fa-solid fa-code"></i></div>
+                  <div class="cert-info">
+                    <span class="cert-title">FULLSTACK DEV</span>
+                    <span class="cert-source">GoIT Certified</span>
+                  </div>
+                  <div class="cert-status"></div>
+                </div>
+
+                <div class="cert-chip">
+                  <div class="cert-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                  <div class="cert-info">
+                    <span class="cert-title">CYBERSECURITY</span>
+                    <span class="cert-source">Cisco Essentials</span>
+                  </div>
+                  <div class="cert-status"></div>
+                </div>
+
+                <div class="cert-chip">
+                  <div class="cert-icon"><i class="fa-brands fa-aws"></i></div>
+                  <div class="cert-info">
+                    <span class="cert-title">AWS CLOUD</span>
+                    <span class="cert-source">Academy Graduate</span>
+                  </div>
+                  <div class="cert-status"></div>
+                </div>
+
+                <div class="cert-chip">
+                  <div class="cert-icon"><i class="fa-solid fa-database"></i></div>
+                  <div class="cert-info">
+                    <span class="cert-title">POSTGRESQL</span>
+                    <span class="cert-source">DB Admin</span>
+                  </div>
+                  <div class="cert-status"></div>
+                </div>
+
               </div>
             </div>
           </div>
@@ -580,97 +605,16 @@
             </div>
           </div>
 
-          <div class="contact-form-wrapper reveal">
-            <form id="contactForm" class="contact-form">
-              <div class="form-group">
-                <label for="name">Imię i Nazwisko *</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  placeholder="Jan Kowalski"
-                />
-              </div>
-
-              <div class="form-group">
-                <label for="email">E-mail *</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  placeholder="jan@firma.pl"
-                />
-              </div>
-
-              <div class="form-group">
-                <label for="company">Firma (Opcjonalnie)</label>
-                <input
-                  type="text"
-                  id="company"
-                  name="company"
-                  placeholder="Twoja Firma Sp. z o.o."
-                />
-              </div>
-
-              <div class="form-group">
-                <label for="service">Czego potrzebujesz?</label>
-                <select id="service" name="service">
-                  <option value="landing">Landing Page (od 1500 PLN)</option>
-                  <option value="business">Business Hub (od 3500 PLN)</option>
-                  <option value="ecommerce">E-Commerce Pro (od 6000 PLN)</option>
-                  <option value="webapp">Web App / React (od 8000 PLN)</option>
-                  <option value="audit">Audyt & Ratunek WP (300-500 PLN)</option>
-                  <option value="speed">Speed Boost Pack (od 800 PLN)</option>
-                  <option value="integration">Integracje API (od 400 PLN)</option>
-                  <option value="other">Partnerstwo Win-Win</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label for="budget"
-                  >Budżet: <span id="budgetValue" class="accent">Partnerstwo | Win-Win</span></label
-                >
-                <input
-                  type="range"
-                  id="budget"
-                  name="budget"
-                  min="0"
-                  max="25000"
-                  step="250"
-                  value="0"
-                />
-                <div class="range-labels">
-                  <span>Partnerstwo</span>
-                  <span>25k+ (No Limits)</span>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label for="message">Wiadomość *</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  required
-                  rows="4"
-                  placeholder="Opisz krótko swój projekt..."
-                ></textarea>
-              </div>
-
-              <div class="form-group checkbox-group">
-                <input type="checkbox" id="rodo" name="rodo" required />
-                <label for="rodo"
-                  >Akceptuję zasady przetwarzania danych (RODO). Wiem, że moje
-                  dane są bezpieczne.</label
-                >
-              </div>
-
-              <button type="submit" class="btn btn-full">
-                WYŚLIJ ZAPYTANIE
+          <div class="contact-cta-wrapper reveal">
+            <div class="cta-box">
+              <p class="cta-text">
+                Nie marnuj czasu na formularze, jeśli nie jesteś zdecydowany.<br>
+                Jeśli jesteś – otwórz terminal i zacznijmy ten projekt.
+              </p>
+              <button class="btn-mega" onclick="openContactPanel()">
+                <i class="fa-solid fa-power-off"></i> ROZPOCZNIJ WSPÓŁPRACĘ
               </button>
-              <div id="formMessage" class="form-message"></div>
-            </form>
+            </div>
           </div>
         </div>
       </div>
@@ -770,6 +714,65 @@
 
             <a href="#contact" class="btn full-width" onclick="closeModal(); prefillForm('other', 0)">Chcę podobny projekt</a>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTACT PANEL -->
+    <div class="modal-overlay" id="contact-panel" aria-hidden="true">
+      <div class="modal-content contact-content">
+        <button class="modal-close" id="contact-close-btn" aria-label="Zamknij">
+          <span></span>
+          <span></span>
+        </button>
+
+        <div class="contact-panel-body">
+          <h3 class="panel-title">TERMINAL <span class="accent">KONTAKTOWY</span></h3>
+          <p class="panel-desc">Wypełnij dane. Odezwie się inżynier, nie handlowiec.</p>
+
+          <form id="contactForm" class="cyber-form">
+            <div class="form-group">
+              <label for="panel-name">Imię i Nazwisko / Firma *</label>
+              <input type="text" id="panel-name" name="name" required placeholder="Jan Kowalski" autocomplete="name">
+            </div>
+
+            <div class="form-group">
+              <label for="panel-email">E-mail Zwrotny *</label>
+              <input type="email" id="panel-email" name="email" required placeholder="jan@firma.pl" autocomplete="email">
+            </div>
+
+            <div class="form-group">
+              <label for="panel-service">Cel Misji (Usługa)</label>
+              <select id="panel-service" name="service">
+                <option value="landing">Landing Page (od 1500 PLN)</option>
+                <option value="business">Strona Firmowa (od 3500 PLN)</option>
+                <option value="ecommerce">Sklep E-Commerce (od 6000 PLN)</option>
+                <option value="webapp">Web App / React (od 8000 PLN)</option>
+                <option value="audit">Audyt & Ratunek WP (300-500 PLN)</option>
+                <option value="speed">Optymalizacja Szybkości (od 800 PLN)</option>
+                <option value="integration">Integracje API (od 400 PLN)</option>
+                <option value="other">Inne / Partnerstwo Win-Win</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="panel-budget">Budżet Operacyjny: <span id="budgetValue" class="accent">Partnerstwo | Win-Win</span></label>
+              <input type="range" id="panel-budget" name="budget" min="0" max="25000" step="250" value="0">
+            </div>
+
+            <div class="form-group">
+              <label for="panel-message">Szczegóły Misji *</label>
+              <textarea id="panel-message" name="message" required rows="4" placeholder="Opisz krótko wymagania..."></textarea>
+            </div>
+
+            <div class="form-group checkbox-group">
+              <input type="checkbox" id="panel-rodo" name="rodo" required>
+              <label for="panel-rodo">Zgoda na przetwarzanie danych (RODO Protocol).</label>
+            </div>
+
+            <button type="submit" class="btn full-width">WYŚLIJ ZGŁOSZENIE</button>
+            <div id="formMessage" class="form-message"></div>
+          </form>
         </div>
       </div>
     </div>
