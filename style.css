@@ -3195,13 +3195,20 @@ body {
 
 /* Modal Responsywność */
 @media (max-width: 768px) {
+  .modal-overlay {
+    align-items: flex-end; /* Modal na dole ekranu */
+  }
   .modal-content {
     max-width: 100%;
     height: calc(100vh - 60px); /* Miejsce na pasek URL przeglądarki */
     max-height: calc(100vh - 60px);
-    margin-top: auto; /* Przyklejony do dołu */
     border-left: none;
     border-top: 2px solid var(--primary);
+    border-radius: 20px 20px 0 0; /* Zaokrąglone górne rogi */
+    transform: translateY(100%); /* Startuje poza ekranem (na dole) */
+  }
+  .modal-overlay.active .modal-content {
+    transform: translateY(0); /* Wjeżdża od dołu */
   }
   .modal-body {
     flex-direction: column;
