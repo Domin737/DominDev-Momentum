@@ -1845,26 +1845,43 @@ document.addEventListener("DOMContentLoaded", () => {
   const modalSolution = document.getElementById("modal-solution");
   const modalResult = document.getElementById("modal-result");
   const closeModalBtn = document.getElementById("modal-close-btn");
+  const glitchOverlay = document.getElementById("system-glitch");
 
-  // 3. Funkcja otwierania (Globalna)
+  // 3. Funkcja otwierania z efektem SYSTEM BREACH
   window.openModal = function(projectId) {
     const data = projectsDB[projectId];
     if (!data) return;
 
-    // Wypełnij dane
-    modalImg.src = data.image;
-    modalTitle.innerText = data.title;
-    modalType.innerText = data.type;
-    modalChallenge.innerText = data.challenge;
-    modalSolution.innerText = data.solution;
-    modalResult.innerText = data.result;
-
-    // Generuj tagi
-    modalTags.innerHTML = data.tags.map(tag => `<span class="tech-badge">${tag}</span>`).join("");
-
-    // Pokaż modal
-    modal.classList.add("active");
+    // KROK 1: Odpal Glitch
+    glitchOverlay.classList.add("active");
     document.body.style.overflow = "hidden";
+
+    // Symulacja czasu "Włamania" (300ms)
+    setTimeout(() => {
+      // KROK 2: Podmień dane w tle (gdy glitch zasłania ekran)
+
+      // Reset animacji scrollowania
+      modalImg.classList.remove("scrolling");
+      void modalImg.offsetWidth; // Trigger reflow
+
+      modalImg.src = data.image;
+      modalTitle.innerText = data.title;
+      modalType.innerText = data.type;
+      modalChallenge.innerText = data.challenge;
+      modalSolution.innerText = data.solution;
+      modalResult.innerText = data.result;
+
+      // Generuj tagi
+      modalTags.innerHTML = data.tags.map(tag => `<span class="tech-badge">${tag}</span>`).join("");
+
+      // Dodaj klasę animacji do obrazka
+      modalImg.classList.add("scrolling");
+
+      // KROK 3: Wyłącz Glitch i Pokaż Panel
+      glitchOverlay.classList.remove("active");
+      modal.classList.add("active");
+
+    }, 300);
   };
 
   // 4. Funkcja zamykania
