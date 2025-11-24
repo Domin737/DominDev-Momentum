@@ -299,6 +299,7 @@ document.addEventListener("DOMContentLoaded", () => {
   /* --- CHATBOT LOGIC --- */
   const chatbotTrigger = document.getElementById("chatbot-trigger");
   const chatbotWindow = document.getElementById("chatbot-window");
+  const chatbotBackdrop = document.getElementById("chatbot-backdrop");
   const chatbotClose = document.getElementById("chatbot-close");
   const chatbotInput = document.getElementById("chatbot-input");
   const chatbotSend = document.getElementById("chatbot-send");
@@ -1487,6 +1488,9 @@ document.addEventListener("DOMContentLoaded", () => {
   function toggleChatbot() {
     chatbotWindow.classList.toggle("active");
     chatbotTrigger.classList.toggle("active");
+    if (chatbotBackdrop) {
+      chatbotBackdrop.classList.toggle("active");
+    }
 
     if (chatbotWindow.classList.contains("active")) {
       chatbotInput.focus();
@@ -1497,6 +1501,9 @@ document.addEventListener("DOMContentLoaded", () => {
   function closeChatbot() {
     chatbotWindow.classList.remove("active");
     chatbotTrigger.classList.remove("active");
+    if (chatbotBackdrop) {
+      chatbotBackdrop.classList.remove("active");
+    }
   }
 
   // Add message to chat
@@ -1591,6 +1598,11 @@ document.addEventListener("DOMContentLoaded", () => {
   chatbotTrigger.addEventListener("click", toggleChatbot);
   chatbotClose.addEventListener("click", closeChatbot);
   chatbotSend.addEventListener("click", sendMessage);
+
+  // Zamknij chat po kliknięciu w backdrop
+  if (chatbotBackdrop) {
+    chatbotBackdrop.addEventListener("click", closeChatbot);
+  }
 
   chatbotInput.addEventListener("keypress", (e) => {
     if (e.key === "Enter") {
