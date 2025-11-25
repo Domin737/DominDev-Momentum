@@ -194,9 +194,12 @@ h3 {
 
   /* Kształt Taktyczny */
   clip-path: polygon(
-    15px 0, 100% 0,
-    100% calc(100% - 15px), calc(100% - 15px) 100%,
-    0 100%, 0 15px
+    15px 0,
+    100% 0,
+    100% calc(100% - 15px),
+    calc(100% - 15px) 100%,
+    0 100%,
+    0 15px
   );
 
   transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
@@ -221,9 +224,48 @@ h3 {
 
   /* Subtelna zmiana kształtu (odwrócenie cięć) */
   clip-path: polygon(
-    0 0, calc(100% - 15px) 0,
-    100% 15px, 100% 100%,
-    15px 100%, 0 calc(100% - 15px)
+    0 0,
+    calc(100% - 15px) 0,
+    100% 15px,
+    100% 100%,
+    15px 100%,
+    0 calc(100% - 15px)
+  );
+}
+
+/* Wersja przycisku dla nawigacji - mniejszy */
+.btn-nav {
+  padding: 4px 18px;
+  font-size: 0.9rem;
+  font-weight: 600 !important; /* Pogrubiony tekst - nadpisanie .nav-links a */
+  letter-spacing: 1px;
+  vertical-align: middle; /* Wyrównanie w linii z innymi pozycjami */
+
+  /* Mniejsze ścięcia dla kompaktowego wyglądu */
+  clip-path: polygon(
+    8px 0,
+    100% 0,
+    100% calc(100% - 8px),
+    calc(100% - 8px) 100%,
+    0 100%,
+    0 8px
+  );
+
+  /* Mniejszy cień dla nawigacji */
+  filter: drop-shadow(0 3px 6px rgba(255, 31, 31, 0.3));
+}
+
+.btn-nav:hover {
+  transform: translateY(-1px); /* Lekkie uniesienie */
+  filter: drop-shadow(0 6px 12px rgba(255, 31, 31, 0.5));
+
+  clip-path: polygon(
+    0 0,
+    calc(100% - 8px) 0,
+    100% 8px,
+    100% 100%,
+    8px 100%,
+    0 calc(100% - 8px)
   );
 }
 
@@ -307,6 +349,7 @@ nav {
 .nav-links {
   display: flex;
   gap: 40px;
+  align-items: center; /* Wyrównanie wszystkich elementów na środku osi Y */
 }
 
 .nav-links a {
@@ -2246,7 +2289,9 @@ footer {
     right: 15px;
     bottom: 110px; /* Nad chatbot-trigger (50px) + jego wysokość (45px) + margines */
     width: auto;
-    height: calc(100vh - 190px); /* Prawie do nawigacji - 80px nav + 110px bottom */
+    height: calc(
+      100vh - 190px
+    ); /* Prawie do nawigacji - 80px nav + 110px bottom */
     max-height: none; /* Usuń limit - niech się rozciąga */
   }
 
@@ -2360,6 +2405,12 @@ footer {
 
   /* Buttons */
   .btn {
+    padding: 10px 18px;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+  }
+
+  .btn-mega {
     padding: 10px 18px;
     font-size: 0.8rem;
     letter-spacing: 0.5px;
@@ -2601,7 +2652,9 @@ footer {
     right: 5px;
     bottom: 105px; /* Nad chatbot-trigger (50px) + jego wysokość (42px) + margines */
     width: auto;
-    height: calc(100vh - 180px); /* Prawie do nawigacji - 75px nav + 105px bottom */
+    height: calc(
+      100vh - 180px
+    ); /* Prawie do nawigacji - 75px nav + 105px bottom */
     max-height: none; /* Usuń limit - niech się rozciąga do nawigacji */
     border-radius: 8px;
   }
@@ -2878,9 +2931,18 @@ body {
 }
 
 @keyframes statusBlink {
-  0% { opacity: 1; box-shadow: 0 0 5px #4ade80; }
-  50% { opacity: 0.4; box-shadow: 0 0 0px #4ade80; }
-  100% { opacity: 1; box-shadow: 0 0 5px #4ade80; }
+  0% {
+    opacity: 1;
+    box-shadow: 0 0 5px #4ade80;
+  }
+  50% {
+    opacity: 0.4;
+    box-shadow: 0 0 0px #4ade80;
+  }
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 5px #4ade80;
+  }
 }
 
 /* Mobile Adjustments dla System Bar */
@@ -2906,7 +2968,9 @@ body {
 }
 
 @keyframes fadeIn {
-  to { opacity: 1; }
+  to {
+    opacity: 1;
+  }
 }
 
 /* --- GLITCH EFFECT (System Breach) --- */
@@ -2972,22 +3036,47 @@ body {
 }
 
 @keyframes glitch-bg {
-  0% { background-color: #050505; }
-  50% { background-color: #1a0000; }
-  100% { background-color: #000000; }
+  0% {
+    background-color: #050505;
+  }
+  50% {
+    background-color: #1a0000;
+  }
+  100% {
+    background-color: #000000;
+  }
 }
 
 @keyframes glitch-anim {
-  0% { transform: scaleX(0.8); }
-  100% { transform: scaleX(1); }
+  0% {
+    transform: scaleX(0.8);
+  }
+  100% {
+    transform: scaleX(1);
+  }
 }
 
 @keyframes glitch-text {
-  0% { transform: translate(2px, 0); opacity: 1; }
-  25% { transform: translate(-2px, 2px); opacity: 0.8; }
-  50% { transform: translate(0, -2px); opacity: 0.5; }
-  75% { transform: translate(-2px, -2px); opacity: 0.9; }
-  100% { transform: translate(2px, 2px); opacity: 1; }
+  0% {
+    transform: translate(2px, 0);
+    opacity: 1;
+  }
+  25% {
+    transform: translate(-2px, 2px);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(0, -2px);
+    opacity: 0.5;
+  }
+  75% {
+    transform: translate(-2px, -2px);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate(2px, 2px);
+    opacity: 1;
+  }
 }
 
 /* --- PROJECT MODAL (Slide-Over Panel) --- */
@@ -3074,18 +3163,28 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background:
-    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
-    linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+    linear-gradient(
+      90deg,
+      rgba(255, 0, 0, 0.06),
+      rgba(0, 255, 0, 0.02),
+      rgba(0, 0, 255, 0.06)
+    );
   background-size: 100% 2px, 3px 100%;
   pointer-events: none;
   z-index: 2;
 }
 
 @keyframes scroll-screenshot {
-  0% { transform: translateY(0); }
-  20% { transform: translateY(0); }
-  100% { transform: translateY(calc(-100% + 400px)); }
+  0% {
+    transform: translateY(0);
+  }
+  20% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(calc(-100% + 400px));
+  }
 }
 
 .modal-tech-stack {
@@ -3270,15 +3369,27 @@ body {
 }
 
 @keyframes scroll-screenshot-mobile {
-  0% { transform: translateY(0); }
-  20% { transform: translateY(0); }
-  100% { transform: translateY(calc(-100% + 300px)); }
+  0% {
+    transform: translateY(0);
+  }
+  20% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(calc(-100% + 300px));
+  }
 }
 
 @keyframes scroll-screenshot-small {
-  0% { transform: translateY(0); }
-  20% { transform: translateY(0); }
-  100% { transform: translateY(calc(-100% + 250px)); }
+  0% {
+    transform: translateY(0);
+  }
+  20% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(calc(-100% + 250px));
+  }
 }
 
 @media (max-width: 480px) {
@@ -3391,7 +3502,7 @@ body {
   border-color: var(--primary);
   background: rgba(25, 25, 25, 0.9);
   transform: translateY(-3px);
-  box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
 }
 
 .cert-chip:hover .cert-icon {
@@ -3508,9 +3619,12 @@ body {
 
   /* Kształt Taktyczny */
   clip-path: polygon(
-    15px 0, 100% 0,
-    100% calc(100% - 15px), calc(100% - 15px) 100%,
-    0 100%, 0 15px
+    15px 0,
+    100% 0,
+    100% calc(100% - 15px),
+    calc(100% - 15px) 100%,
+    0 100%,
+    0 15px
   );
 
   transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
@@ -3534,9 +3648,12 @@ body {
 
   /* Subtelna zmiana kształtu (odwrócenie cięć) */
   clip-path: polygon(
-    0 0, calc(100% - 15px) 0,
-    100% 15px, 100% 100%,
-    15px 100%, 0 calc(100% - 15px)
+    0 0,
+    calc(100% - 15px) 0,
+    100% 15px,
+    100% 100%,
+    15px 100%,
+    0 calc(100% - 15px)
   );
 }
 
@@ -3549,9 +3666,15 @@ body {
     padding: 30px 20px;
   }
   .btn-mega {
-    font-size: 1rem;
-    padding: 18px 30px;
+    padding: 14px 30px; /* Taki sam padding jak .btn dla spójności */
     width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .btn-mega {
+    font-size: 0.8rem; /* Taki sam jak .btn dla spójności */
+    padding: 12px 25px; /* Taki sam jak .btn dla spójności */
   }
 }
 
