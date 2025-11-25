@@ -3465,9 +3465,8 @@ body {
 
 /* CTA Box (w miejscu formularza) */
 .contact-cta-wrapper {
-  display: flex;
+  display: grid;
   align-items: center;
-  justify-content: center;
 }
 
 .cta-box {
